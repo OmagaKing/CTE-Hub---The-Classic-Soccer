@@ -1,0 +1,518 @@
+local player = game.Players.LocalPlayer
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "CTE Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+--[[
+Name = <string> - The name of the UI.
+HidePremium = <bool> - Whether or not the user details shows Premium status or not.
+SaveConfig = <bool> - Toggles the config saving in the UI.
+ConfigFolder = <string> - The name of the folder where the configs are saved.
+IntroEnabled = <bool> - Whether or not to show the intro animation.
+IntroText = <string> - Text to show in the intro animation.
+IntroIcon = <string> - URL to the image you want to use in the intro animation.
+Icon = <string> - URL to the image you want displayed on the window.
+CloseCallback = <function> - Function to execute when the window is closed.
+]]
+
+local Tab = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.minimiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+local Section = Tab:AddSection({
+	Name = "Fake&Anti"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+
+OrionLib:MakeNotification({
+	Name = "Welcome to my Hub :D",
+	Content = "Notification content... what will it say??",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+--[[
+Title = <string> - The title of the notification.
+Content = <string> - The content of the notification.
+Image = <string> - The icon of the notification.
+Time = <number> - The duration of the notfication.
+]]
+
+Tab:AddButton({
+	Name = "Fake Arms",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Espera até que o personagem tenha as partes necessárias
+local function setupFakeArms()
+    local leftArm = character:FindFirstChild("Left Arm")
+    local rightArm = character:FindFirstChild("Right Arm")
+    
+    if leftArm and rightArm then
+        -- Cria os braços falsos
+        local fakeLeftArm = Instance.new("Part")
+        fakeLeftArm.Size = Vector3.new(1, 2, 1) -- Tamanho do braço
+        fakeLeftArm.Position = leftArm.Position
+        fakeLeftArm.Anchored = false
+        fakeLeftArm.CanCollide = true
+        fakeLeftArm.BrickColor = leftArm.BrickColor -- Igualar a cor
+        fakeLeftArm.Name = "Fake Left Arm"
+        fakeLeftArm.Parent = character
+        
+        local fakeRightArm = Instance.new("Part")
+        fakeRightArm.Size = Vector3.new(1, 2, 1) -- Tamanho do braço
+        fakeRightArm.Position = rightArm.Position
+        fakeRightArm.Anchored = false
+        fakeRightArm.CanCollide = true
+        fakeRightArm.BrickColor = rightArm.BrickColor -- Igualar a cor
+        fakeRightArm.Name = "Fake Right Arm"
+        fakeRightArm.Parent = character
+
+        -- Anexando os braços falsos
+        local leftMotor = Instance.new("Motor6D")
+        leftMotor.Name = "LeftArmMotor"
+        leftMotor.Part0 = leftArm
+        leftMotor.Part1 = fakeLeftArm
+        leftMotor.C0 = CFrame.new(0, 0, 0)
+        leftMotor.C1 = CFrame.new(0, 0, 0)
+        leftMotor.Parent = leftArm
+
+        local rightMotor = Instance.new("Motor6D")
+        rightMotor.Name = "RightArmMotor"
+        rightMotor.Part0 = rightArm
+        rightMotor.Part1 = fakeRightArm
+        rightMotor.C0 = CFrame.new(0, 0, 0)
+        rightMotor.C1 = CFrame.new(0, 0, 0)
+        rightMotor.Parent = rightArm
+
+        -- Tornar os braços reais invisíveis
+        leftArm.Transparency = 1
+        rightArm.Transparency = 1
+    end
+end
+
+-- Executa a função
+setupFakeArms()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Tab:AddButton({
+	Name = "Fake Legs",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Espera até que o personagem tenha as partes necessárias
+local function setupFakeLegs()
+    local leftLeg = character:FindFirstChild("Left Leg")
+    local rightLeg = character:FindFirstChild("Right Leg")
+    
+    if leftLeg and rightLeg then
+        -- Cria as pernas falsas
+        local fakeLeftLeg = Instance.new("Part")
+        fakeLeftLeg.Size = Vector3.new(1, 2, 1) -- Tamanho da perna
+        fakeLeftLeg.Position = leftLeg.Position
+        fakeLeftLeg.Anchored = false
+        fakeLeftLeg.CanCollide = true
+        fakeLeftLeg.BrickColor = leftLeg.BrickColor -- Igualar a cor
+        fakeLeftLeg.Name = "Fake Left Leg"
+        fakeLeftLeg.Parent = character
+        
+        local fakeRightLeg = Instance.new("Part")
+        fakeRightLeg.Size = Vector3.new(1, 2, 1) -- Tamanho da perna
+        fakeRightLeg.Position = rightLeg.Position
+        fakeRightLeg.Anchored = false
+        fakeRightLeg.CanCollide = true
+        fakeRightLeg.BrickColor = rightLeg.BrickColor -- Igualar a cor
+        fakeRightLeg.Name = "Fake Right Leg"
+        fakeRightLeg.Parent = character
+
+        -- Anexando as pernas falsas
+        local leftMotor = Instance.new("Motor6D")
+        leftMotor.Name = "LeftLegMotor"
+        leftMotor.Part0 = leftLeg
+        leftMotor.Part1 = fakeLeftLeg
+        leftMotor.C0 = CFrame.new(0, 0, 0)
+        leftMotor.C1 = CFrame.new(0, 0, 0)
+        leftMotor.Parent = leftLeg
+
+        local rightMotor = Instance.new("Motor6D")
+        rightMotor.Name = "RightLegMotor"
+        rightMotor.Part0 = rightLeg
+        rightMotor.Part1 = fakeRightLeg
+        rightMotor.C0 = CFrame.new(0, 0, 0)
+        rightMotor.C1 = CFrame.new(0, 0, 0)
+        rightMotor.Parent = rightLeg
+
+        -- Tornar as pernas reais invisíveis
+        leftLeg.Transparency = 1
+        rightLeg.Transparency = 1
+    end
+end
+
+-- Executa a função
+setupFakeLegs()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Tab:AddButton({
+   Name = "AntiKick",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+
+if player and player:FindFirstChild("Backpack") then
+    local antiExploitMod = player.Backpack:FindFirstChild("AntiExploitMod")
+    if antiExploitMod then
+        antiExploitMod.Disabled = true
+    end
+end
+  	end    
+})
+
+Tab:AddButton({
+   Name = "AntiKick",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local client = player.Backpack:FindFirstChild("Client")
+
+if client then
+    client.Disabled = true -- Desativa se for suportado
+end
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Player"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+
+Tab:AddButton({
+	Name = "Studs 4 (Recommended)",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho das pernas
+        local leftLeg = character:FindFirstChild("Left Leg")
+        local rightLeg = character:FindFirstChild("Right Leg")
+        if leftLeg and rightLeg then
+            leftLeg.Size = Vector3.new(4, 2, 4) -- Largura, Altura, Profundidade
+            rightLeg.Size = Vector3.new(4, 2, 4)
+        end
+        
+        -- Aumenta o tamanho dos pés
+        local leftFoot = character:FindFirstChild("Left Foot")
+        local rightFoot = character:FindFirstChild("Right Foot")
+        if leftFoot and rightFoot then
+            leftFoot.Size = Vector3.new(4, 1, 4)
+            rightFoot.Size = Vector3.new(4, 1, 4)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Tab:AddButton({
+	Name = "Studs 6",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho das pernas
+        local leftLeg = character:FindFirstChild("Left Leg")
+        local rightLeg = character:FindFirstChild("Right Leg")
+        if leftLeg and rightLeg then
+            leftLeg.Size = Vector3.new(6, 2, 6) -- Largura, Altura, Profundidade
+            rightLeg.Size = Vector3.new(6, 2, 6)
+        end
+        
+        -- Aumenta o tamanho dos pés
+        local leftFoot = character:FindFirstChild("Left Foot")
+        local rightFoot = character:FindFirstChild("Right Foot")
+        if leftFoot and rightFoot then
+            leftFoot.Size = Vector3.new(6, 1, 6)
+            rightFoot.Size = Vector3.new(6, 1, 6)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Tab:AddButton({
+	Name = "Studs 8",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho das pernas
+        local leftLeg = character:FindFirstChild("Left Leg")
+        local rightLeg = character:FindFirstChild("Right Leg")
+        if leftLeg and rightLeg then
+            leftLeg.Size = Vector3.new(8, 2, 8) -- Largura, Altura, Profundidade
+            rightLeg.Size = Vector3.new(8, 2, 8)
+        end
+        
+        -- Aumenta o tamanho dos pés
+        local leftFoot = character:FindFirstChild("Left Foot")
+        local rightFoot = character:FindFirstChild("Right Foot")
+        if leftFoot and rightFoot then
+            leftFoot.Size = Vector3.new(8, 1, 8)
+            rightFoot.Size = Vector3.new(8, 1, 8)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Tab:AddButton({
+	Name = "Studs 10",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho das pernas
+        local leftLeg = character:FindFirstChild("Left Leg")
+        local rightLeg = character:FindFirstChild("Right Leg")
+        if leftLeg and rightLeg then
+            leftLeg.Size = Vector3.new(10, 2, 10) -- Largura, Altura, Profundidade
+            rightLeg.Size = Vector3.new(10, 2, 10)
+        end
+        
+        -- Aumenta o tamanho dos pés
+        local leftFoot = character:FindFirstChild("Left Foot")
+        local rightFoot = character:FindFirstChild("Right Foot")
+        if leftFoot and rightFoot then
+            leftFoot.Size = Vector3.new(10, 1, 10)
+            rightFoot.Size = Vector3.new(10, 1, 10)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+local Section = Tab:AddSection({
+	Name = "GoalKeeper"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+
+Tab:AddButton({
+	Name = "Studs 4",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho dos braços
+        local leftArm = character:FindFirstChild("Left Arm")
+        local rightArm = character:FindFirstChild("Right Arm")
+        if leftArm and rightArm then
+            leftArm.Size = Vector3.new(4, 2, 4) -- Largura, Altura, Profundidade
+            rightArm.Size = Vector3.new(4, 2, 4)
+        end
+        
+        -- Aumenta o tamanho das mãos
+        local leftHand = character:FindFirstChild("Left Hand")
+        local rightHand = character:FindFirstChild("Right Hand")
+        if leftHand and rightHand then
+            leftHand.Size = Vector3.new(4, 1, 4)
+            rightHand.Size = Vector3.new(4, 1, 4)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Studs 6",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho dos braços
+        local leftArm = character:FindFirstChild("Left Arm")
+        local rightArm = character:FindFirstChild("Right Arm")
+        if leftArm and rightArm then
+            leftArm.Size = Vector3.new(6, 2, 6) -- Largura, Altura, Profundidade
+            rightArm.Size = Vector3.new(6, 2, 6)
+        end
+        
+        -- Aumenta o tamanho das mãos
+        local leftHand = character:FindFirstChild("Left Hand")
+        local rightHand = character:FindFirstChild("Right Hand")
+        if leftHand and rightHand then
+            leftHand.Size = Vector3.new(6, 1, 6)
+            rightHand.Size = Vector3.new(6, 1, 6)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Studs 8",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho dos braços
+        local leftArm = character:FindFirstChild("Left Arm")
+        local rightArm = character:FindFirstChild("Right Arm")
+        if leftArm and rightArm then
+            leftArm.Size = Vector3.new(8, 2, 8) -- Largura, Altura, Profundidade
+            rightArm.Size = Vector3.new(8, 2, 8)
+        end
+        
+        -- Aumenta o tamanho das mãos
+        local leftHand = character:FindFirstChild("Left Hand")
+        local rightHand = character:FindFirstChild("Right Hand")
+        if leftHand and rightHand then
+            leftHand.Size = Vector3.new(8, 1, 8)
+            rightHand.Size = Vector3.new(8, 1, 8)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Studs 10 (Recommended)",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+character:WaitForChild("Humanoid")
+
+-- Função para alterar o tamanho das partes
+local function resizeParts()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        -- Aumenta o tamanho dos braços
+        local leftArm = character:FindFirstChild("Left Arm")
+        local rightArm = character:FindFirstChild("Right Arm")
+        if leftArm and rightArm then
+            leftArm.Size = Vector3.new(10, 2, 10) -- Largura, Altura, Profundidade
+            rightArm.Size = Vector3.new(10, 2, 10)
+        end
+        
+        -- Aumenta o tamanho das mãos
+        local leftHand = character:FindFirstChild("Left Hand")
+        local rightHand = character:FindFirstChild("Right Hand")
+        if leftHand and rightHand then
+            leftHand.Size = Vector3.new(10, 1, 10)
+            rightHand.Size = Vector3.new(10, 1, 10)
+        end
+    end
+end
+
+-- Chama a função para redimensionar
+resizeParts()
+  	end    
+})
